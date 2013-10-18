@@ -97,7 +97,7 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 		<?php
 		}
 
-		public static function sanitize_media_select_callback($value, $setting, $args){
+		public static function sanitize_media_select($value, $setting, $args){
 			$values = explode(',', $value);
 			array_map( 'intval', $values);
 			return implode(',', $values);
@@ -105,4 +105,12 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 	}
 	add_action( 'init', array( 'Voce_Media_Setting', 'initialize' ) );
 
+function vs_display_media_select( $value, $setting, $args ) {
+	return Voce_Media_Setting::display_media_select( $value, $setting, $args );
 }
+
+function vs_sanitize_media_select() {
+	return Voce_Media_Setting::sanitize_media_select( $value, $setting, $args );
+}
+
+}// End Class Check
