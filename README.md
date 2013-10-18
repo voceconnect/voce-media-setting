@@ -1,7 +1,7 @@
 Voce Media Setting
 ===================
-Contributors: prettyboymp, kevinlangleyjr, jeffstieler, markparolisi, banderon  
-Tags: post, meta  
+Contributors: kevinlangleyjr, csloisel  
+Tags: settings, media  
 Requires at least: 3.5  
 Tested up to: 3.6  
 Stable tag: 1.0  
@@ -27,11 +27,16 @@ if( ! class_exists( 'Voce_Media_Setting' ) ) {
 ## Usage
 See [Voce Settings API](https://github.com/voceconnect/voce-settings-api). 
 
+Use `vs_display_media_select` for the display callback arg and `vs_sanitize_media_select` in the sanitize callbacks arg.
+
 #### Example
 
 ```php
 <?php
-
+    $page->$group->add_setting( "Field Title", "field_id", array(
+        'display_callback'   => 'vs_display_media_select',
+        'sanitize_callbacks' => array( 'vs_sanitize_media_select' )
+    ) );
 ?>
 ```
 
