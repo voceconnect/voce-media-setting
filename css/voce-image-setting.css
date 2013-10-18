@@ -1,0 +1,9 @@
+.voce-image-setting img{
+    max-width: 100%;
+    height: auto;
+    padding: 3px;
+}
+
+.voce-image-setting a{
+    display: inline-block;
+}
