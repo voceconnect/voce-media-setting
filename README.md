@@ -9,7 +9,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
 ## Description
-Voce Settings API Extension for creating media settings.
+Voce Settings API Extension for creating media settings. Requires [Voce Settings API](https://github.com/voceconnect/voce-settings-api).
 
 ## Installation
 
