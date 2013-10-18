@@ -136,7 +136,7 @@
     };
 
     $(document).ready(function(){
-        $('.voce-image-setting').each(function(i, e){
+        $('.voce-media-setting').each(function(i, e){
             new VoceImageSetting( this, $(this).data('field-settings') );
         });
     });
