@@ -40,5 +40,7 @@ Use `vs_display_media_select` for the display callback arg and `vs_sanitize_medi
 ?>
 ```
 
+## Changelog
+
 **1.0**
 *Initial version.*
