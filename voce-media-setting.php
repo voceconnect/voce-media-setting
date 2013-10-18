@@ -9,7 +9,7 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 				$allowed_hooks = apply_filters('voce-media-settings-js-hooks', array());
 				if( 'settings_page_' == substr( $hook, 0, 14 ) || in_array($hook, $allowed_hooks) ) {
 					wp_enqueue_media();
-					wp_enqueue_script('voce-media-setting-js', plugins_url( '/js/voce-media-setting.js', __FILE__ ), array( 'jquery', 'media-upload', 'wp-ajax-response' ) );
+					wp_enqueue_script('voce-media-setting-js', plugins_url( '/js/voce-media-setting.js', __FILE__ ), array( 'jquery' ) );
 					wp_enqueue_style( 'voce-media-setting-css', plugins_url( '/css/voce-media-setting.css', __FILE__ ) );
 				}
 			});
@@ -84,7 +84,7 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 			<div class="voce-media-setting hide-if-no-js" data-field-settings="<?php echo esc_attr(json_encode($field_settings)); ?>" >
 				<p>
 					<input class="hidden vpm-id" type="hidden" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $field_name ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-					<a title="<?php echo esc_attr( $label_add ); ?>" href="#" class="vpm-add <?php echo ( $hide_remove ) ? 'button' : ''; ?>">
+					<a title="<?php echo esc_attr( $label_add ); ?>" href="#" class="vpm-add" <?php echo ( $hide_remove ) ? 'style="display:none;"' : ''; ?>>
 						<?php echo $link_content; ?>
 					</a>
 				</p>
@@ -103,14 +103,14 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 			return implode(',', $values);
 		}
 	}
-	add_action( 'init', array( 'Voce_Media_Setting', 'initialize' ) );
+	add_action( 'admin_init', array( 'Voce_Media_Setting', 'initialize' ) );
 
-function vs_display_media_select( $value, $setting, $args ) {
-	return Voce_Media_Setting::display_media_select( $value, $setting, $args );
-}
+	function vs_display_media_select( $value, $setting, $args ) {
+		return Voce_Media_Setting::display_media_select( $value, $setting, $args );
+	}
 
-function vs_sanitize_media_select() {
-	return Voce_Media_Setting::sanitize_media_select( $value, $setting, $args );
-}
+	function vs_sanitize_media_select( $value, $setting, $args ) {
+		return Voce_Media_Setting::sanitize_media_select( $value, $setting, $args );
+	}
 
 }// End Class Check
