@@ -22,7 +22,7 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 				printf('<span class="description">%s</span>', $args['description']);
 		}
 
-		public static function render_html( $value, $setting, $args, $return = false ){
+		public static function render_html( array $value, $setting, $args, $return = false ){
 
 			$default_args = array(
 				'mime_types'      => array( 'image' ),
@@ -80,7 +80,7 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 		?>
 			<div class="voce-media-setting hide-if-no-js" data-field-settings="<?php echo esc_attr(json_encode($field_settings)); ?>" >
 				<p>
-					<input class="hidden vpm-id" type="hidden" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $field_name ); ?>" value="<?php echo esc_attr( implode(',', (array) $value) ); ?>" />
+					<input class="hidden vpm-id" type="hidden" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $field_name ); ?>" value="<?php echo esc_attr( implode(',', $value) ); ?>" />
 					<a title="<?php echo esc_attr( $label_add ); ?>" href="#" class="vpm-add <?php echo ( $hide_remove ) ? 'button' : ''; ?>">
 						<?php echo $link_content; ?>
 					</a>
