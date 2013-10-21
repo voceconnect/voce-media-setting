@@ -38,6 +38,7 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 			$label_add    = 'Set ' . $setting->title;
 			$label_remove = 'Remove ' . $setting->title;
 			$link_content = '';
+			$value_string = '';
 			$hide_remove  = true;
 
 			// If value is set get thumbnails to display and show remove button
