@@ -42,6 +42,10 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 
 			// If value is set get thumbnails to display and show remove button
 			if ( $value ) {
+				if ( !is_array( $value ) ) {
+					$value = array( $value );
+				}
+				$value_string = implode(',', $value);				
 				foreach ( $value as $attachment ) {
 					$value_post = get_post($attachment);
 					if ( $value_post ) {
@@ -80,7 +84,7 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 		?>
 			<div class="voce-media-setting hide-if-no-js" data-field-settings="<?php echo esc_attr(json_encode($field_settings)); ?>" >
 				<p>
-					<input class="hidden vpm-id" type="hidden" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $field_name ); ?>" value="<?php echo esc_attr( implode(',', $value) ); ?>" />
+					<input class="hidden vpm-id" type="hidden" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $field_name ); ?>" value="<?php echo esc_attr($value_string); ?>" />
 					<a title="<?php echo esc_attr( $label_add ); ?>" href="#" class="vpm-add <?php echo ( $hide_remove ) ? 'button' : ''; ?>">
 						<?php echo $link_content; ?>
 					</a>
