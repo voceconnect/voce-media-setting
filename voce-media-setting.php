@@ -22,7 +22,7 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 				printf('<span class="description">%s</span>', $args['description']);
 		}
 
-		public static function render_html( array $value, $setting, $args, $return = false ){
+		public static function render_html( $value, $setting, $args, $return = false ){
 
 			$default_args = array(
 				'mime_types'      => array( 'image' ),
