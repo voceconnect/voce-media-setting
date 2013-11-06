@@ -1,6 +1,7 @@
 {
     "name": "voceconnect/voce-media-setting",
     "description": "Voce Settings API Extension for creating media settings.",
+    "type": "library",
     "license": "GPLv2+",
     "authors": [
         {
@@ -12,9 +13,6 @@
             "email": "curtis@voceconnect.com"
         }
     ],
-    "minimum-stability": "stable",
-    "require": {
-    },
     "autoload": {
         "files": ["voce-media-setting.php"]
     }
