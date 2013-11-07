@@ -4,15 +4,18 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 
 	class Voce_Media_Setting {
 		public static function initialize(){
-
-			add_action( 'admin_enqueue_scripts', function($hook){
-				$allowed_hooks = apply_filters('voce-media-settings-js-hooks', array());
-				if( 'settings_page_' == substr( $hook, 0, 14 ) || in_array($hook, $allowed_hooks) ) {
-					wp_enqueue_media();
-					wp_enqueue_script('voce-media-setting-js', plugins_url( '/js/voce-media-setting.js', __FILE__ ), array( 'jquery' ) );
-					wp_enqueue_style( 'voce-media-setting-css', plugins_url( '/css/voce-media-setting.css', __FILE__ ) );
+			add_action( 'vs_admin_enqueue_scripts', function( $vs_page ){
+				foreach( $vs_page->groups as $group ){
+					foreach( $group->settings as $setting ){
+						if( $setting->args['display_callback'] == 'vs_display_media_select' ){
+							wp_enqueue_media();
+							wp_enqueue_script('voce-media-setting-js', plugins_url( '/js/voce-media-setting.js', __FILE__ ), array( 'jquery' ) );
+							wp_enqueue_style( 'voce-media-setting-css', plugins_url( '/css/voce-media-setting.css', __FILE__ ) );
+							break 2;
+						}
+					}
 				}
-			});
+			} );
 
 		}
 
@@ -46,7 +49,7 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 				if ( !is_array( $value ) ) {
 					$value = array( $value );
 				}
-				$value_string = implode(',', $value);				
+				$value_string = implode(',', $value);
 				foreach ( $value as $attachment ) {
 					$value_post = get_post($attachment);
 					if ( $value_post ) {
