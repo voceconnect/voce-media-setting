@@ -4,10 +4,10 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 
 	class Voce_Media_Setting {
 		public static function initialize(){
-			add_action( 'vs_admin_enqueue_scripts', function( $vs_page, $page_hook ){
-				foreach( $vs_page->group as $group ){
+			add_action( 'vs_admin_enqueue_scripts', function( $vs_page ){
+				foreach( $vs_page->groups as $group ){
 					foreach( $group->settings as $setting ){
-						if( $setting->display_callback == 'vs_display_media_select' ){
+						if( $setting->args['display_callback'] == 'vs_display_media_select' ){
 							wp_enqueue_media();
 							wp_enqueue_script('voce-media-setting-js', plugins_url( '/js/voce-media-setting.js', __FILE__ ), array( 'jquery' ) );
 							wp_enqueue_style( 'voce-media-setting-css', plugins_url( '/css/voce-media-setting.css', __FILE__ ) );
@@ -15,7 +15,7 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 						}
 					}
 				}
-			});
+			} );
 
 		}
 
