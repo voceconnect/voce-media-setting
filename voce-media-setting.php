@@ -9,8 +9,8 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 					foreach( $group->settings as $setting ){
 						if( $setting->args['display_callback'] == 'vs_display_media_select' ){
 							wp_enqueue_media();
-							wp_enqueue_script('voce-media-setting-js', plugins_url( '/js/voce-media-setting.js', __FILE__ ), array( 'jquery' ) );
-							wp_enqueue_style( 'voce-media-setting-css', plugins_url( '/css/voce-media-setting.css', __FILE__ ) );
+							wp_enqueue_script('voce-media-setting-js', self::plugins_url( '/js/voce-media-setting.js', __FILE__ ), array( 'jquery' ) );
+							wp_enqueue_style( 'voce-media-setting-css', self::plugins_url( '/css/voce-media-setting.css', __FILE__ ) );
 							break 2;
 						}
 					}
@@ -107,6 +107,37 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 			$values = array_map( 'intval', $values);
 			return array_filter( $values );
 		}
+
+
+        /**
+         * @method plugins_url
+         * @param type $relative_path
+         * @param type $plugin_path
+         * @return string
+         */
+        public static function plugins_url($relative_path, $plugin_path) {
+            $template_dir = get_template_directory();
+
+            foreach (array('template_dir', 'plugin_path') as $var) {
+                $$var = str_replace('\\', '/', $$var); // sanitize for Win32 installs
+                $$var = preg_replace('|/+|', '/', $$var);
+            }
+            if (0 === strpos($plugin_path, $template_dir)) {
+                $url = get_template_directory_uri();
+                $folder = str_replace($template_dir, '', dirname($plugin_path));
+                if ('.' != $folder) {
+                    $url .= '/' . ltrim($folder, '/');
+                }
+                if (!empty($relative_path) && is_string($relative_path) && strpos($relative_path, '..') === false) {
+                    $url .= '/' . ltrim($relative_path, '/');
+                }
+                return $url;
+            } else {
+                return plugins_url($relative_path, $plugin_path);
+            }
+        }
+
+    }
 	}
 	add_action( 'admin_init', array( 'Voce_Media_Setting', 'initialize' ) );
 
