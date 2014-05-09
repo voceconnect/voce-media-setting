@@ -138,7 +138,6 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
         }
 
     }
-	}
 	add_action( 'admin_init', array( 'Voce_Media_Setting', 'initialize' ) );
 
 	function vs_display_media_select( $value, $setting, $args ) {
