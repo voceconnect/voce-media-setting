@@ -55,9 +55,9 @@ if ( !class_exists( 'Voce_Media_Setting' ) ){
 					if ( $value_post ) {
 						$mime_type = $value_post->post_mime_type;
 						$icon = ( strpos( $mime_type, 'image' ) ) ? false : true;
-						$thumbnail_html = wp_get_attachment_image( $attachment, $thumb_size, $icon );
-						if ( ! empty( $thumbnail_html ) ) {
-							$link_content .= $thumbnail_html;
+						$thumbnail_src = wp_get_attachment_image_src( $attachment, $thumb_size, $icon );
+						if( !empty( $thumbnail_src[0] ) ){
+							$link_content .= sprintf( '<img src="%s" />', $thumbnail_src[0] );
 							$hide_remove = false;
 						}
 					}
