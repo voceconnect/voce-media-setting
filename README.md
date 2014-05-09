@@ -4,7 +4,7 @@ Contributors: kevinlangleyjr, csloisel
 Tags: settings, media  
 Requires at least: 3.5  
 Tested up to: 3.6  
-Stable tag: 1.0.0  
+Stable tag: 1.1  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -42,5 +42,9 @@ Use `vs_display_media_select` for the display callback arg and `vs_sanitize_medi
 
 ## Changelog
 
-**1.0**
+**1.1**  
+*Adding custom plugins_url function to assist in including the plugin in WP VIP projects.*
+*Switching from `wp_get_attachment_image` to `wp_get_attachment_image_src` due to issues with getimagesize() and .ico files.*
+
+**1.0**  
 *Initial version.*
