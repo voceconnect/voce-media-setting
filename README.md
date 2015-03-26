@@ -3,8 +3,8 @@ Voce Media Setting
 Contributors: kevinlangleyjr, csloisel  
 Tags: settings, media  
 Requires at least: 3.5  
-Tested up to: 3.6  
-Stable tag: 1.1  
+Tested up to: 4.1.1  
+Stable tag: 1.2  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -41,6 +41,9 @@ Use `vs_display_media_select` for the display callback arg and `vs_sanitize_medi
 ```
 
 ## Changelog
+
+**1.2**  
+*Fixing issue with referencing self when not within a scope for self
 
 **1.1**  
 *Adding custom plugins_url function to assist in including the plugin in WP VIP projects.*
