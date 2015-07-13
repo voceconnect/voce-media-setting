@@ -42,6 +42,9 @@ Use `vs_display_media_select` for the display callback arg and `vs_sanitize_medi
 
 ## Changelog
 
+**1.3.0**
+* Preventing fatal error for setups that load dependencies before WordPress
+
 **1.2**  
 *Fixing issue with referencing self when not within a scope for self
 

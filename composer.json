@@ -2,7 +2,7 @@
     "name": "voceconnect/voce-media-setting",
     "description": "Voce Settings API Extension for creating media settings.",
     "type": "library",
-    "license": "GPLv2+",
+    "license": "GPL-3.0+",
     "authors": [
         {
             "name": "Kevin Langley",
@@ -14,6 +14,7 @@
         }
     ],
     "autoload": {
-        "files": ["voce-media-setting.php"]
+        "classmap": ["voce-media-setting.php"],
+        "files": ["bootstrap.php", "functions.php"]
     }
 }
