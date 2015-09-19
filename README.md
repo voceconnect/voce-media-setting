@@ -42,6 +42,9 @@ Use `vs_display_media_select` for the display callback arg and `vs_sanitize_medi
 
 ## Changelog
 
+**1.3.1**
+* Preventing fatal error for setups that load dependency more than once and already declared functions within functions.php
+
 **1.3.0**
 * Preventing fatal error for setups that load dependencies before WordPress
 
